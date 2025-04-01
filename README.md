@@ -44,7 +44,3 @@ Si deseas contribuir a este proyecto, por favor sigue estos pasos:
 2. Crea una nueva rama para tu característica o corrección de error.
 3. Haz tus cambios y crea un pull request.
 
-## Licencia
-## Licencia
-Este proyecto está bajo la Licencia MIT. Para más detalles, consulta el archivo [LICENSE](./LICENSE).
-
