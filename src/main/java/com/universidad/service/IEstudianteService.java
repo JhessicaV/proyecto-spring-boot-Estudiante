@@ -1,16 +1,20 @@
-package com.universidad.service; // Define el paquete al que pertenece esta interfaz
+package com.universidad.service; 
 
-import com.universidad.dto.EstudianteDTO; // Importa la clase EstudianteDTO del paquete dto
+import com.universidad.dto.EstudianteDTO;
 
-import java.util.List; // Importa la interfaz List para manejar listas
+import java.util.List; 
 
 public interface IEstudianteService {
-    List<EstudianteDTO> obtenerTodosLosEstudiantes(); // Este ya está bien definido
-    EstudianteDTO crearEstudiante(EstudianteDTO estudianteDTO); // Método para crear un estudiante y devolver un EstudianteDTO
-    
-    // Método para eliminar un estudiante dado su ID
-    void eliminarEstudiante(Long id); // Método para eliminar un estudiante, no necesita devolver nada
+    //Listado de estudiantes
+    List<EstudianteDTO> obtenerTodosLosEstudiantes(); 
 
-    // Nuevo método para actualizar un estudiante
-    EstudianteDTO actualizarEstudiante(Long id, EstudianteDTO estudianteDTO); // Método para actualizar un estudiante dado su ID
+    // INICISO A: Nuevo método para actualizar un estudiante
+    EstudianteDTO actualizarEstudiante(Long id, EstudianteDTO estudianteDTO); 
+    
+    // INICSO B:  Método para crear un estudiante y devolver un EstudianteDTO
+    EstudianteDTO crearEstudiante(EstudianteDTO estudianteDTO); 
+    
+    // INCISO C: Método para eliminar un estudiante dado su ID
+    void eliminarEstudiante(Long id); 
+
 }

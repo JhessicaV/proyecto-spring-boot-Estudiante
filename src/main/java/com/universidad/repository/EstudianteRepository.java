@@ -1,47 +1,49 @@
-package com.universidad.repository; // Define el paquete al que pertenece esta clase
+package com.universidad.repository; 
 
-import com.universidad.model.Estudiante; // Importa la clase Estudiante del paquete model
-import org.springframework.stereotype.Repository; // Importa la anotación Repository de Spring
+import com.universidad.model.Estudiante; 
+import org.springframework.stereotype.Repository;
 
-import java.time.LocalDate; // Importa la clase LocalDate para manejar fechas
-import java.util.ArrayList; // Importa la clase ArrayList para manejar listas
-import java.util.List; // Importa la interfaz List para manejar listas
-import java.util.Map; // Importa la interfaz Map para manejar mapas
-import java.util.concurrent.ConcurrentHashMap; // Importa la clase ConcurrentHashMap para manejar mapas concurrentes
-import java.util.concurrent.atomic.AtomicLong; // Importa la clase AtomicLong para manejar contadores atómicos
+import java.time.LocalDate; 
+import java.util.ArrayList;
+import java.util.List; 
+import java.util.Map; 
+import java.util.concurrent.ConcurrentHashMap; 
+import java.util.concurrent.atomic.AtomicLong; 
 
 
-@Repository // Anotación que indica que esta clase es un repositorio de Spring
+@Repository 
 public class EstudianteRepository {
-    private final Map<Long, Estudiante> estudiantes = new ConcurrentHashMap<>(); // Mapa concurrente para almacenar estudiantes con su ID como clave
-    private final AtomicLong idContador = new AtomicLong(1); // Contador atómico para generar IDs únicos para los estudiantes
-    
-    public Estudiante save(Estudiante estudiante) { // Método para guardar un estudiante en el repositorio
-        if (estudiante.getId() == null) { // Si el estudiante no tiene ID
-            estudiante.setId(idContador.getAndIncrement()); // Asigna un ID único al estudiante
-        }
-        estudiantes.put(estudiante.getId(), estudiante); // Agrega el estudiante al mapa
-        return estudiante; // Retorna el estudiante guardado
-    }
-    
-    public List<Estudiante> findAll() { // Método para obtener todos los estudiantes
-        return new ArrayList<>(estudiantes.values()); // Retorna una lista de todos los estudiantes en el mapa
-    }
-    
-    public void deleteById(Long id) { // Método para eliminar un estudiante por su ID
-        estudiantes.remove(id); // Elimina el estudiante del mapa
-    }
+    private final Map<Long, Estudiante> estudiantes = new ConcurrentHashMap<>(); 
+    private final AtomicLong idContador = new AtomicLong(1); 
 
-    // Método para obtener un estudiante por su ID
-    public Estudiante findById(Long id) {
-        return estudiantes.get(id); // Retorna el estudiante con el ID especificado
+    // Método para obtener todos los estudiantes LISTADO
+    public List<Estudiante> findAll() { 
+        return new ArrayList<>(estudiantes.values()); 
     }
-
-    // Método para actualizar un estudiante
+    // INICISO A: Métodos necesarios para actualizar un estudiante
     public Estudiante update(Estudiante estudiante) {
-        estudiantes.put(estudiante.getId(), estudiante); // Actualiza el estudiante en el mapa
-        return estudiante; // Retorna el estudiante actualizado
+        estudiantes.put(estudiante.getId(), estudiante); 
+        return estudiante; 
     }
+    public Estudiante findById(Long id) {
+        return estudiantes.get(id); 
+    }
+
+    // INICISO B : Método para guardar un estudiante en el repositorio
+    public Estudiante save(Estudiante estudiante) { 
+        if (estudiante.getId() == null) { 
+            estudiante.setId(idContador.getAndIncrement()); 
+        }
+        estudiantes.put(estudiante.getId(), estudiante); 
+        return estudiante; 
+    }
+
+    // INICISO C:  Método para eliminar un estudiante por su ID
+    public void deleteById(Long id) { 
+        estudiantes.remove(id); 
+
+
+
 
     
     // Método para inicializar algunos datos de ejemplo
